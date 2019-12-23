@@ -4,6 +4,10 @@ import router from './router'
 import store from './store'
 
 import axios from 'axios'
+
+import BootstrapVue from 'bootstrap-vue'
+
+Vue.use(BootstrapVue)
  
 Vue.prototype.$api = axios.create({
   baseURL: 'http://localhost:8000/api'

@@ -30,7 +30,7 @@
                 <!-- Footer About Text -->
                 <div class="col-lg-4">
                 <h4 class="text-uppercase mb-4">About GMG demo app</h4>
-                <p class="lead mb-0">Freelance is a free to use, MIT licensed Bootstrap theme created by
+                <p class="lead mb-0">Vue CLI 3 + Bootstrap 4 Starter Kit <br>
                     <a href="http://startbootstrap.com">Start Bootstrap</a>.</p>
                 </div>
 

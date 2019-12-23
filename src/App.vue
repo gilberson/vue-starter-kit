@@ -15,6 +15,8 @@ import NavBar from './components/NavBar.vue'
 import SiteFooter from './components/SiteFooter'
 import CopyRight from './components/CopyRight'
 
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
 export default {
   name: 'AppLayout',
   props: {
