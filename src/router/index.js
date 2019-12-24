@@ -41,6 +41,19 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/ViewTask.vue')
+  },
+  {
+    path: '/user/:id(\\d+)',
+    name: 'view-user',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/ViewUser.vue')
+  },
+  { 
+    path: "*", 
+    name: 'page-not-found', 
+    component: () => import(/* webpackChunkName: "about" */ '../views/PageNotFound.vue')
   }
 ]
 

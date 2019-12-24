@@ -3,11 +3,11 @@
         <div class="row">
             <div class="col task-detail">
                 <div class="card card-task">
-                    <h5 class="card-header">Task Detail</h5>
+                    <h5 class="card-header">User Profile</h5>
                     <div class="card-body">
-                        <h5 class="card-title">{{ task.title }}</h5>
+                        <h5 class="card-title">{{ user.name }}</h5>
                         <p class="card-text">
-                            {{ task.description }}
+                            {{ user.email }}
                         </p>
                         <router-link :to="{ name : 'task'}">
                             <button type="button" class="btn btn-primary add-task">Task</button>
@@ -22,7 +22,7 @@
 <script>
 
 export default {
-    name: 'home',
+    name: 'user',
     components: {
     
     },
@@ -30,19 +30,19 @@ export default {
 
         return {
 
-            task: null
+            user: null
         }
     },
     mounted () {
         let id = this.$route.params.id  
-        this.getTask(id)
+        this.getUser(id)
     },
     methods: {
 
-        getTask(id){ 
-            this.$api.get('task/' + id)
+        getUser(id){ 
+            this.$api.get('user/' + id)
             .then(response => {
-                this.task = response.data
+                this.user = response.data
             })
             .catch(error => {
                 console.log(error)

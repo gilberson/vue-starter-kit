@@ -2,18 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col task-detail">
-                <div class="card card-task">
-                    <h5 class="card-header">Task Detail</h5>
-                    <div class="card-body">
-                        <h5 class="card-title">{{ task.title }}</h5>
-                        <p class="card-text">
-                            {{ task.description }}
-                        </p>
-                        <router-link :to="{ name : 'task'}">
-                            <button type="button" class="btn btn-primary add-task">Task</button>
-                        </router-link>
-                    </div>
-                </div>
+                <h1>USERS PAGE</h1>
             </div>
         </div>
     </div>
@@ -34,13 +23,13 @@ export default {
         }
     },
     mounted () {
-        let id = this.$route.params.id  
-        this.getTask(id)
+        //let id = this.$route.params.id  
+        //this.getTask(id)
     },
     methods: {
 
-        getTask(id){ 
-            this.$api.get('task/' + id)
+        /*getTask(id){ 
+            this.$api.get('/task/' + id)
             .then(response => {
                 this.task = response.data
             })
@@ -48,7 +37,7 @@ export default {
                 console.log(error)
                 this.errored = true
             })
-        }
+        }*/
     }
 }
 </script>
