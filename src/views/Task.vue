@@ -131,7 +131,7 @@ export default {
   },
   mounted () {
     this.$api
-    .get('/task')
+    .get('/tasks')
     .then(response => {
       this.tasks = response.data
       this.items = this.getItems(response.data)
@@ -231,7 +231,7 @@ export default {
       margin-left: 1.5em;
       margin-top: -0.82em;
     }
-
+console.log("APP API ROOT: " + process.env.VUE_APP_ROOT_API_DEV)
     .selected-rows{
 
       margin-top: 1.5em;

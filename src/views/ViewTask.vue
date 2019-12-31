@@ -9,7 +9,7 @@
                         <p class="card-text">
                             {{ task.description }}
                         </p>
-                        <router-link :to="{ name : 'task'}">
+                        <router-link :to="{ name : 'tasks'}">
                             <button type="button" class="btn btn-primary add-task">Task</button>
                         </router-link>
                     </div>
@@ -40,7 +40,7 @@ export default {
     methods: {
 
         getTask(id){ 
-            this.$api.get('task/' + id)
+            this.$api.get('tasks/' + id)
             .then(response => {
                 this.task = response.data
             })

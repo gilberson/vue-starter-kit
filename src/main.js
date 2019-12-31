@@ -10,7 +10,7 @@ import BootstrapVue from 'bootstrap-vue'
 Vue.use(BootstrapVue)
  
 Vue.prototype.$api = axios.create({
-  baseURL: 'http://localhost:8000/api'
+  baseURL: process.env.NODE_ENV === 'development' ? process.env.VUE_APP_ROOT_API_DEV : process.env.prod.VUE_APP_ROOT_API_PROD
 })
 Vue.config.productionTip = false
 

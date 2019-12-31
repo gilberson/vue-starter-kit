@@ -2,14 +2,15 @@
     <div class="container">
         <div class="row">
             <div class="col task-detail">
-                <div class="card card-task">
-                    <h5 class="card-header">User Profile</h5>
+                <h3 class="user-tasks">Tasks of User {{ user[0].name }}</h3>
+                <div v-for="(task, index) in user[0].tasks" :key="index" class="card card-task">
+                    <h5 class="card-header">Task Detail</h5>
                     <div class="card-body">
-                        <h5 class="card-title">{{ user.name }}</h5>
+                        <h5 class="card-title">{{ task.title }}</h5>
                         <p class="card-text">
-                            {{ user.email }}
+                            {{ task.description }}
                         </p>
-                        <router-link :to="{ name : 'task'}">
+                        <router-link :to="{ name : 'tasks'}">
                             <button type="button" class="btn btn-primary add-task">Task</button>
                         </router-link>
                     </div>
@@ -22,15 +23,16 @@
 <script>
 
 export default {
-    name: 'user',
+    name: 'home',
     components: {
     
     },
     data: function() {
 
         return {
-
-            user: null
+            user: null,
+            tasks: null,
+            errored: false
         }
     },
     mounted () {
@@ -40,9 +42,12 @@ export default {
     methods: {
 
         getUser(id){ 
-            this.$api.get('user/' + id)
+            this.$api.get('users/' + id)
             .then(response => {
-                this.user = response.data
+                this.user = response.data.user
+
+                console.log("User : " + response.data.user[0].email)
+                //console.log("Tasks : " + response.data.user[0].tasks)
             })
             .catch(error => {
                 console.log(error)
@@ -56,12 +61,18 @@ export default {
 <style scoped>
     .task-detail{
 
-        /*border: 1px dotted gray;*/
+        margin-bottom: 2.4em;
         margin-top: 6.5em;
         min-height: 350px;
     }
     .card-task{
 
         margin-top: 3.5em;
+    }
+
+    .user-tasks{
+        margin-top: 2em;
+        border-bottom:1px solid #D8D8D8;
+        padding: 1em;
     }
 </style>
