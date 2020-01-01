@@ -10,6 +10,10 @@
           <button type="button" class="btn btn-primary delete-task">Show the selected item</button>
         </router-link>
 
+        <router-link v-if="selected.length == 1 " :to="{ name : 'update-task', params: { id: parseInt(selected[0].id) }}">
+          <button type="button" class="btn btn-success delete-task">Update the selected item</button>
+        </router-link>
+
         <b-col sm="5" md="6" class="my-1">
           <b-form-select
             v-model="perPage"
@@ -178,6 +182,11 @@ export default {
         .catch(error => {
           console.log(error)
           this.errored = true
+          console.log("Error status : " + error.response.status)
+          if(error.response.status === 404){    
+            // redirect user to an error page  
+            this.$router.push('/page-not-found')
+          }
         })
         i +=1
       });
@@ -231,7 +240,6 @@ export default {
       margin-left: 1.5em;
       margin-top: -0.82em;
     }
-console.log("APP API ROOT: " + process.env.VUE_APP_ROOT_API_DEV)
     .selected-rows{
 
       margin-top: 1.5em;

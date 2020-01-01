@@ -12,10 +12,20 @@ Vue.use(BootstrapVue)
 Vue.prototype.$api = axios.create({
   baseURL: process.env.NODE_ENV === 'development' ? process.env.VUE_APP_ROOT_API_DEV : process.env.prod.VUE_APP_ROOT_API_PROD
 })
+
 Vue.config.productionTip = false
 
 new Vue({
   router,
   store,
+  methods: {
+    statusToString(status) {
+      if(status == 1){
+        return 'Activé'
+      } else if(status == 0){
+        return 'Désactivé'
+      }
+    }
+  },
   render: h => h(App)
 }).$mount('#app')

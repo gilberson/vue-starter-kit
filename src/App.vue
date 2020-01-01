@@ -26,10 +26,16 @@ export default {
     NavBar,
     CopyRight,
     SiteFooter
+  },
+  methods: {
+    statusToString(status){
+      if (status == 1 ) {
+        return 'Activé'
+      } else if(status == 0){
+        return 'Désactivé'
+      }
+    }
   }
 }
 </script>
 
-<style>
-
-</style>

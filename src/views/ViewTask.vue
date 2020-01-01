@@ -3,14 +3,14 @@
         <div class="row">
             <div class="col task-detail">
                 <div class="card card-task">
-                    <h5 class="card-header">Task Detail</h5>
+                    <h5 class="card-header">{{ $root.statusToString(task.status) }}</h5>
                     <div class="card-body">
                         <h5 class="card-title">{{ task.title }}</h5>
                         <p class="card-text">
                             {{ task.description }}
                         </p>
-                        <router-link :to="{ name : 'tasks'}">
-                            <button type="button" class="btn btn-primary add-task">Task</button>
+                        <router-link :to="{ name : 'update-task', params:{'id': task.id }}">
+                            <button type="button" class="btn btn-primary add-task">Update</button>
                         </router-link>
                     </div>
                 </div>
@@ -47,8 +47,13 @@ export default {
             .catch(error => {
                 console.log(error)
                 this.errored = true
+                console.log("Error status : " + error.response.status)
+                if(error.response.status === 404){    
+                    // redirect user to an error page  
+                    this.$router.push('/page-not-found')
+                }
             })
-        }
+        },
     }
 }
 </script>

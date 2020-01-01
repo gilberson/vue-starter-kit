@@ -4,14 +4,14 @@
             <div class="col task-detail">
                 <h3 class="user-tasks">Tasks of User {{ user[0].name }}</h3>
                 <div v-for="(task, index) in user[0].tasks" :key="index" class="card card-task">
-                    <h5 class="card-header">Task Detail</h5>
+                    <h5 class="card-header">{{ $root.statusToString(task.status) }}</h5>
                     <div class="card-body">
                         <h5 class="card-title">{{ task.title }}</h5>
                         <p class="card-text">
                             {{ task.description }}
                         </p>
-                        <router-link :to="{ name : 'tasks'}">
-                            <button type="button" class="btn btn-primary add-task">Task</button>
+                        <router-link :to="{ name : 'update-task', params:{'id': task.id }}">
+                            <button type="button" class="btn btn-primary add-task">Update</button>
                         </router-link>
                     </div>
                 </div>
