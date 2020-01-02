@@ -165,15 +165,12 @@ export default {
       }
       return items;
     },
-    showTask(){
-
-    },
     deleteTask(selectedItems){
       var i = 0;
       selectedItems.forEach(element => {
         
         this.deleted_tasks[i] = element.title
-        this.$api.post('/delete/' + element.id)
+        this.$api.delete('tasks/' + element.id)
         .then(response => {
           this.tasks = response.data
           this.deleted = true

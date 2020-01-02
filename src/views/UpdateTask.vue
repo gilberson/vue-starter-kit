@@ -86,7 +86,7 @@ export default {
   },
   methods: {
     updateTask(){
-      this.$api.post('/update/' + this.$route.params.id,{
+      this.$api.put('tasks/' + this.$route.params.id,{
         title: this.task.title,
         description: this.task.description,
         status: this.task.status

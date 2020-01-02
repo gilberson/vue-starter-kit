@@ -82,7 +82,7 @@ export default {
   methods: {
     addTask(){
 
-      this.$api.post('/store',{
+      this.$api.post('/tasks',{
         user_id: this.user_id,
         title: this.title,
         description: this.description,
