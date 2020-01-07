@@ -33,6 +33,17 @@
               </div>
 
               <div class="form-group">
+                  <label for="status">User</label>
+                  <validation-provider rules="required" v-slot="{ errors }">
+                      <select v-model="user_id" class="form-control" id="user_id">
+                        <option value="" disabled selected>Select the user</option>
+                        <option v-for="(user, index) in users" :key="index" :value="user.id">{{ user.name }}</option>
+                      </select>
+                      <span>{{ errors[0] }}</span>
+                  </validation-provider>
+              </div>
+
+              <div class="form-group">
                   <label for="status">Status</label>
                   <validation-provider rules="required" v-slot="{ errors }">
                       <select v-model="status" class="form-control" id="status">
@@ -70,20 +81,30 @@ export default {
   data: function(){
 
     return {
-      user_id: 5,
+      user_id: '',
       title: '',
       description: '',
       status: '',
       tasks: null,
       errored: false,
-      successed: false
+      successed: false,
+      users: null
     }
+  },
+  mounted(){
+    this.$api.get('/users')
+    .then(response => {
+      this.users = response.data.users
+    })
+    .catch(error => {
+      console.log(error.response)
+    })
   },
   methods: {
     addTask(){
 
       this.$api.post('/tasks',{
-        user_id: this.user_id,
+        user_id: parseInt(this.user_id),
         title: this.title,
         description: this.description,
         status: this.status
